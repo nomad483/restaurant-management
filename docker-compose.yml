@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ".:/app"
+      - /app/go/pkg/mod
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - PORT=${PORT}
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

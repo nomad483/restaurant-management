@@ -1,0 +1,43 @@
+# Config file for `air` with default settings
+
+# Working directory
+root = "."
+tmp_dir = "tmp"
+
+# Exclude any directories you want to skip
+excludes = ["tmp", "vendor", ".git", "node_modules"]
+
+# Command to run your app
+cmd = "go run main.go"
+
+# Build settings
+include_ext = ["go", "tpl", "tmpl", "html"]
+bin = "bin/main"
+full_bin = "APP_BIN"
+
+# Logging
+#log = "air.log"
+
+# Banner settings
+banner_color = "cyan"
+banner = """
+----------------------------------------------------
+                   Live Reload
+----------------------------------------------------
+"""
+
+# Includes
+includes = [
+  "controllers/*",
+  "database/*",
+  "helpers/*",
+  "middleware/*",
+  "models/*",
+  "repositories/*",
+  "routes",
+  "services/*",
+  "main.go",
+]
+
+# You can define custom commands to run when files change
+# commands = ["go fmt ./..."]
